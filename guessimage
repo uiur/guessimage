@@ -1,0 +1,11 @@
+#!/bin/bash
+
+url=$1
+
+curl -L -s \
+     --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36" \
+     "https://www.google.com/searchbyimage?image_url=$url" \
+  | pup \
+  | grep -A 3 推測 \
+  | pup 'a text{}' 2>/dev/null \
+  | xargs
